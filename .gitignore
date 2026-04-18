@@ -1,0 +1,28 @@
+# Java
+backend/target/
+backend/uploads/
+*.class
+*.jar
+
+# Python
+backend-python/venv/
+backend-python/__pycache__/
+backend-python/.env
+**/__pycache__/
+*.pyc
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 模型文件（体积太大）
+backend-python/models/

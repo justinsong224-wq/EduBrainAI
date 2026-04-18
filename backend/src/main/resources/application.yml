@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: edu-rag-backend
+
+  # MySQL 数据库连接配置
+  datasource:
+    url: jdbc:mysql://localhost:3307/edu_rag?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: era_user
+    password: era_pass_2024
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA 配置（自动建表、打印SQL）
+  jpa:
+    hibernate:
+      ddl-auto: update        # update = 自动同步表结构，不删数据
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  # Redis 连接配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: era_redis_2024
+      database: 0
+
+  # RabbitMQ 连接配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: era_user
+    password: era_mq_2024
+    virtual-host: /
+
+  # 文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+# JWT 配置（用于用户登录认证）
+jwt:
+  secret: edu-rag-assistant-secret-key-2024-must-be-at-least-256-bits-long
+  expiration: 86400000   # 24小时，单位毫秒
+
+# 文件存储路径
+file:
+  upload-dir: ./uploads
+
+# 日志级别
+logging:
+  level:
+    com.edurag: DEBUG
+    org.springframework.security: DEBUG
