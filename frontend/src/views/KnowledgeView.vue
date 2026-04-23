@@ -177,7 +177,16 @@ const handleCreate = async () => {
     createLoading.value = false
   }
 }
-
+const handleDelete = async (id) => {
+  await ElMessageBox.confirm('确定删除这个知识库吗？知识库内所有文档也会一并删除。', '警告', { type: 'warning' })
+  try {
+    await axios.delete(`/api/kb/${id}`)
+    ElMessage.success('删除成功')
+    loadKbList()
+  } catch (e) {
+    ElMessage.error('删除失败')
+  }
+}
 const handleDeleteDoc = async (docId, kbId) => {
   await ElMessageBox.confirm('确定删除这个文档吗？删除后向量数据也会同步清除。', '警告', { type: 'warning' })
   try {
