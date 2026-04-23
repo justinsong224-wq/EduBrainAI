@@ -97,10 +97,9 @@ onMounted(async () => {
   // 检查 Spring Boot 状态
  // 检查 Spring Boot 状态
 try {
-  const res = await axios.get('http://localhost:8080/actuator/health', { timeout: 2000 })
-  status.value.spring = res.data.status === 'UP'
+  await axios.get('http://localhost:8080/api/auth/ping', { timeout: 2000 })
+  status.value.spring = true
 } catch (e) {
-  // 能收到响应就说明服务在运行（即使是401也表示服务正常）
   status.value.spring = e.response?.status !== undefined
 }
 
